@@ -1,137 +1,93 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <title>TRAVELER - Free Travel Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>M.U.T.E</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
-
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="{{asset("./assets/tempLib/owlcarousel/assets/owl.carousel.min.css")}}" rel="stylesheet">
-    <link href="{{asset("./assets/tempLib/tempusdominus/css/tempusdominus-bootstrap-4.min.css")}}" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset("./assets/tempCss/style.css")}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset("./assets/css/open-iconic-bootstrap.min.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/animate.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/owl.carousel.min.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/owl.theme.min.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/magnific-popup.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/aos.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/ionicons.min.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/bootstrap-datepicker.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/jquery.timepicker.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/flaticon.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/icomoon.css")}}">
+    <link rel="stylesheet" href="{{asset("./assets/css/style.css")}}">
 </head>
-
 <body>
     @include('sweetalert::alert')
-
-            <!-- Topbar Start -->
-            <div class="container-fluid bg-light pt-3 d-none d-lg-block">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                            <div class="d-inline-flex align-items-center">
-                                <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
-                                <p class="text-body px-3">|</p>
-                                <p><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 text-center text-lg-right">
-                            <div class="d-inline-flex align-items-center">
-                                <a class="text-primary px-3" href="">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a class="text-primary px-3" href="">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a class="text-primary px-3" href="">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a class="text-primary px-3" href="">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a class="text-primary pl-3" href="">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
+    {{-- start NAV --}}
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+        <a class="navbar-brand" href="{{route("homePage")}}">M.U.T.E</a>
+        {{-- toggler --}}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+        {{-- Nav items --}}
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="{{route("homePage")}}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{{route('Placesallll')}}" class="nav-link">Tour</a></li>
+                <li class="nav-item"><a href="{{route("allHotell")}}" class="nav-link">Hotels</a></li>
+                <li class="nav-item"><a href="{{route('allTourguide')}}" class="nav-link">TOURGUIDES</a></li>
+                <li class="nav-item"><a href="{{route("makeYourTrip")}}" class="nav-link">M.U.T.E</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li>
+                @if(!Auth::user())
+                {{-- signIn dropdown --}}
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">SignUp</a>
+                        <div class="dropdown-menu border-0 rounded-0 m-0">
+                            <a href="{{route("user.create")}}" class="dropdown-item">As User</a>
+                            <a href="{{route("tourguide.create")}}" class="dropdown-item">As Tourguide</a>
+                            <a href="{{route("hotelOwner.create")}}" class="dropdown-item">As HotelOwner</a>
+                            {{-- <a href="guide.html" class="dropdown-item">Travel Guides</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a> --}}
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- Topbar End -->
-        
-        
-            <!-- Navbar Start -->
-            <div class="container-fluid position-relative nav-bar p-0">
-                <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
-                    <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                        <a href="" class="navbar-brand">
-                            <h1 class="m-0 text-primary">
-                                <span class="text-dark">M.U</span>
-                                .T.E</h1>
-                        </a>
-                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                            <div class="navbar-nav ml-auto py-0">
-                                <a href="{{route("homePage")}}" class="nav-item nav-link active">Home</a>
-                                <a href="{{route("allHotell")}}" class="nav-item nav-link">ACCOMEDATIONS</a>
-                                <a href="{{route('Placesallll')}}" class="nav-item nav-link">PLACES</a>
-                                <a href="{{route('allTourguide')}}" class="nav-item nav-link">TOURGUIDES</a>
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">M.U.T.E</a>
-                                    <div class="dropdown-menu border-0 rounded-0 m-0">
-                                        <a href="{{route("makeYourTrip")}}" class="dropdown-item">Make UR Trip Easier</a>
-                                    </div>
-                                </div>
-                                @if(!Auth::user())
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">SignUp</a>
-                                    <div class="dropdown-menu border-0 rounded-0 m-0">
-                                        <a href="{{route("user.create")}}" class="dropdown-item">As User</a>
-                                        <a href="{{route("tourguide.create")}}" class="dropdown-item">As Tourguide</a>
-                                        <a href="{{route("hotelOwner.create")}}" class="dropdown-item">As HotelOwner</a>
-                                        {{-- <a href="guide.html" class="dropdown-item">Travel Guides</a>
-                                        <a href="testimonial.html" class="dropdown-item">Testimonial</a> --}}
-                                    </div>
-                                </div>
-                                @endif
-                                @auth
-                                @if(Auth::user()->Role->name =="admin")
-                                <a href="{{route('AdminDash')}}" class="nav-item nav-link active">AdminDash</a>
-                                @endif
-                                @if(Auth::user()->Role->name =="hotelOwner")
-                                <a href="{{route('hotelOwnerDashboard')}}" class="nav-item nav-link active">HotelOwner</a>
-                                @endif
-                                @if(Auth::user()->Role->name =="tourguide")
-                                <a href="{{route('TourguideProfile.index')}}" class="nav-item nav-link active">MyTourguide</a>
-                                @endif
-                                @if(Auth::user()->Role->name =="driver")
-                                <a href="{{route('driverprofileDash.index')}}" class="nav-item nav-link active">Driver</a>
-                                @endif
-                                @if(Auth::user()->Role->name =="admin")
-                                <a href="{{route('AdminDash')}}" class="nav-item nav-link active">AdminDash</a>
-                                @endif
-                                @endauth
-                                @auth
-                                <a href="{{ route("logout") }}" class="nav-item nav-link">logOut</a>
-                                @endauth
-                                <a href="contact.html" class="nav-item nav-link">Contact</a>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <!-- Navbar End -->
-        
-    
-            
+                @endif
+                {{-- user role --}}
+                @auth
+                    @if(Auth::user()->Role->name =="admin")
+                        <a href="{{route('AdminDash')}}" class="nav-item nav-link active">AdminDash</a>
+                    @endif
+                    @if(Auth::user()->Role->name =="hotelOwner")
+                        <a href="{{route('hotelOwnerDashboard')}}" class="nav-item nav-link active">HotelOwner</a>
+                    @endif
+                    @if(Auth::user()->Role->name =="tourguide")
+                        <a href="{{route('TourguideProfile.index')}}" class="nav-item nav-link active">MyTourguide</a>
+                    @endif
+                    @if(Auth::user()->Role->name =="driver")
+                        <a href="{{route('driverprofileDash.index')}}" class="nav-item nav-link active">Driver</a>
+                    @endif
+                    @if(Auth::user()->Role->name =="admin")
+                        <a href="{{route('AdminDash')}}" class="nav-item nav-link active">AdminDash</a>
+                    @endif
+                    @endauth
+                    @auth
+                        <a href="{{ route("logout") }}" class="nav-item nav-link">logOut</a>
+                @endauth
+                {{-- <a href="contact.html" class="nav-item nav-link">Contact</a> --}}
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <!-- END nav -->
 
  @yield('bodyContent')
 
@@ -160,97 +116,94 @@
 ================================================= -->
 
      <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <a href="" class="navbar-brand">
-                    <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
-                </a>
-                <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
-                <div class="d-flex justify-content-start">
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">MUTE</h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
-                </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Information</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">About</a></li>
+                <li><a href="#" class="py-2 d-block">Service</a></li>
+                <li><a href="#" class="py-2 d-block">Terms and Conditions</a></li>
+                <li><a href="#" class="py-2 d-block">Become a partner</a></li>
+                <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
+                <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
+              </ul>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
-                </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Customer Support</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">FAQ</a></li>
+                <li><a href="#" class="py-2 d-block">Payment Option</a></li>
+                <li><a href="#" class="py-2 d-block">Booking Tips</a></li>
+                <li><a href="#" class="py-2 d-block">How it works</a></li>
+                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+              </ul>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
-                <div class="w-100">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary px-3">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	              </ul>
+	            </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
         <div class="row">
-            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white-50">Copyright &copy; <a href="#">Domain</a>. All Rights Reserved.</a>
-                </p>
-            </div>
-            <div class="col-lg-6 text-center text-md-right">
-                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a>
-                </p>
-            </div>
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
         </div>
-    </div>
-    <!-- Footer End -->
+      </div>
+    </footer>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
+  <script src="{{asset("./assets/js/jquery.min.js") }}"></script>
+  <script src="{{asset("./assets/js/jquery-migrate-3.0.1.min.js") }}"></script>
+  <script src="{{asset("./assets/js/popper.min.js") }}"></script>
+  <script src="{{asset("./assets/js/bootstrap.min.js") }}"></script>
+  <script src="{{asset("./assets/js/jquery.easing.1.3.js") }}"></script>
+  <script src="{{asset("./assets/js/jquery.waypoints.min.js") }}"></script>
+  <script src="{{asset("./assets/js/jquery.stellar.min.js") }}"></script>
+  <script src="{{asset("./assets/js/owl.carousel.min.js") }}"></script>
+  <script src="{{asset("./assets/js/jquery.magnific-popup.min.js") }}"></script>
+  <script src="{{asset("./assets/js/aos.js") }}"></script>
+  <script src="{{asset("./assets/js/jquery.animateNumber.min.js") }}"></script>
+  <script src="{{asset("./assets/js/bootstrap-datepicker.js") }}"></script>
+  <script src="{{asset("./assets/js/jquery.timepicker.min.js") }}"></script>
+  <script src="{{asset("./assets/js/scrollax.min.js") }}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{{asset("./assets/js/google-map.js") }}"></script>
+  <script src="{{asset("./assets/js/main.js") }}"></script>
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    {{-- <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a> --}}
 
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset("./assets/tempLib/easing/easing.min.js")}}"></script>
-    <script src="{{asset("./assets/tempLib/owlcarousel/owl.carousel.min.js")}}"></script>
-    <script src="{{asset("./assets/tempLib/tempusdominus/js/moment.min.js")}}"></script>
-    <script src="{{asset("./assets/tempLib/tempusdominus/js/moment-timezone.min.js")}}"></script>
-    <script src="{{asset("./assets/tempLib/tempusdominus/js/tempusdominus-bootstrap-4.min.js")}}"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="{{asset("./assets/tempJs/main.js")}}"></script>
 </body>
 
 </html>

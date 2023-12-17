@@ -1,5 +1,5 @@
 @extends("temp")
-@section('bodyContent') 
+@section('bodyContent')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <link rel="stylesheet" href="{{asset('assets/css/hotels.css')}}" >
     <title>Hotels</title>
@@ -33,8 +33,8 @@
                   <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                       <div class="p-3" style="max-width: 900px;">
                           <h4 class="text-white text-uppercase mb-md-3">Hotels</h4>
-                          <h1 class="display-3 text-white mb-md-4">Let's Discover The Aswan Together</h1>
-                     
+                          <h1 class="display-3 text-white mb-md-4">Let's Discover Aswan Together</h1>
+
                       </div>
                   </div>
               </div>
@@ -44,7 +44,7 @@
                       <div class="p-3" style="max-width: 900px;">
                           <h4 class="text-white text-uppercase mb-md-3">hotels</h4>
                           <h1 class="display-3 text-white mb-md-4">Discover your best stay in Aswan</h1>
-                  
+
                       </div>
                   </div>
               </div>
@@ -84,16 +84,16 @@
                 <p>{{$Hotel->type}}</p>
                 <p>{{$Hotel->address}}</p>
                 <a href="{{route('hotel.show',['id'=>$Hotel->id])}}">Show More<i class='far fa-long-arrow-alt-right'></i></a>
-            
-              </div>  
+
+              </div>
                 <!-- "hotels.hotel",["Hotel"=> $hotelInfo],["hotelImg"=>$hotelImgs] -->
             </div>
             @endforeach
           </div>
         </div>
-      </section> 
-  
-    
+      </section>
+
+
 </body>
 </html>
 

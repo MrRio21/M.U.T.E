@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +21,7 @@
     @extends("temp")
     @section('bodyContent')
 
-  
+
 
 
     <!-- Carousel Start -->
@@ -37,7 +34,7 @@
                       <div class="p-3" style="max-width: 900px;">
                           <h4 class="text-white text-uppercase mb-md-3">Places</h4>
                           <h1 class="display-3 text-white mb-md-4">Let's Discover The Aswan Together</h1>
-                     
+
                       </div>
                   </div>
               </div>
@@ -47,7 +44,7 @@
                       <div class="p-3" style="max-width: 900px;">
                           <h4 class="text-white text-uppercase mb-md-3">TourGuide</h4>
                           <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
-                  
+
                       </div>
                   </div>
               </div>
@@ -154,7 +151,7 @@
                                     @foreach( $Tourguide->languages as $lang)
                                     <h4>  {{$lang->language}}</h4>
                                     @endforeach
-                                        <p class="admin">syndicate_No:{{$Tourguide->syndicate_No}} </p>
+                                        <p class="admin">syndicate_No:{{$TourGide->syndicate_No}} </p>
                                         <h6 class="h-2 mt-4"><br> Bio:{{isset($Tourguide->bio)?:"you will enjoy your Time"}}</h6>
                                     <div class="btn" data-bs-toggle="modal" data-bs-target="#myModal"  style="background-color: #CC8C18">Book now!</div>
 
@@ -229,10 +226,10 @@
 
         </section>
 
-        
 
 
-    
+
+
 
 
 </body>
